@@ -1,0 +1,8 @@
+[project]
+org='sfl'
+name='neovim_midi_techno'
+
+[default]
+command="nvim"
+
+; vim: ft=ini
