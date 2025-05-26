@@ -4,6 +4,7 @@ FROM archlinux:base-20250511.0.348143
 RUN pacman -Syu --noconfirm && \
     pacman -S --noconfirm \
     base-devel \
+    man-db \
     cmake \
     git \
     python \
@@ -19,8 +20,6 @@ RUN pacman -Syu --noconfirm && \
     \
     && pacman -Scc --noconfirm
 
-RUN cargo install ginko_ls
-
-ENV PATH="/root/.cargo/bin:${PATH}"
-
-RUN npm install -g jshint
+RUN git clone \
+    https://github.com/ellisonleao/gruvbox.nvim.git \
+    /home/kin/.config/nvim/pack/gruvbox/start/gruvbox

@@ -1,8 +1,9 @@
 [project]
 org='sfl'
-name='neovim_midi_techno'
+name='neovim-midi-techno'
 
-[default]
-command="nvim"
+[build]
+command="nvim -u config/init.vim midi.md"
+docker_run_args="--detach-keys="ctrl-@""
 
 ; vim: ft=ini
