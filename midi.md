@@ -1,152 +1,208 @@
 
-# LANGUAGE SMART EDITING WITH NEOVIM <!-- {{{ -->
+# <!-- {{{ -->    LANGUAGE SMART EDITING WITH NEOVIM 
 
-My goal for this presentation is to show you the power that
-   Neovim gives you and a bit to show off the incredible
-              developer experience it provides
+        My goal for this presentation is to show you the power that
+           Neovim gives you and a bit to show off the incredible
+                    developer experience it provides
 
-<!-- }}} -->
+     Its a Vim fork that added Lua for configuration and an LSP client
 
-# WHAT PEOPLE EXPECT OF THEIR IDE <!-- {{{ -->
-
-Features:
-
-    ai integration                     in-editor documentation
-    auto includes                      integrated terminal
-    build system integration           linting
-    call hierarchy                     list file symbols
-    code folding                       list workspace symbols
-    completion                         multicursors
-    debugger integration               plugin support
-    diagnostics                        refactoring
-    file diffing                       regex searching
-    file navigation                    remote file editing
-    file tree                          renaming
-    formatting                         repeat actions
-    function signature help            snippets
-    goto declaration                   source control integration
-    goto definition                    spellcheck
-    goto interface                     test integration
-    goto references                    text replace
-    goto type definition               whitespace visualization
-    highlighting                       window management
-    hover menu
+      It only takes learning 1-3 different languages to configure it
 
 <!-- }}} -->
 
-# NEOVIM FEATURES OUT OF THE BOX WITH NO CONFIG <!-- {{{ -->
+# <!-- {{{ -->    WHAT PEOPLE EXPECT OF THEIR IDE 
 
-Features:
+  Features:
 
-                                       in-editor documentation
-                                       integrated terminal
-    build system integration           linting*
+    ai integration            goto declaration         plugin support                     
+    auto includes             goto definition          refactoring                        
+    build system integration  goto interface           regex searching                    
+    call hierarchy            goto references          remote file editing                
+    code folding              goto type definition     renaming                           
+    completion                highlighting             repeat actions                     
+    debugger integration      hover menu               snippets                           
+    diagnostics               in-editor documentation  source control integration         
+    file diffing              integrated terminal      spellcheck                         
+    file navigation           linting                  test integration                   
+    file tree                 list file symbols        text replace                       
+    formatting                list workspace symbols   whitespace visualization           
+    function signature help   multicursors             window management                      
 
-    code folding
-    completion                         multicursors*
-    debugger integration               plugin support
+<!-- }}} -->
+
+# <!-- {{{ -->    NEOVIM FEATURES OUT OF THE BOX WITH NO CONFIG 
+
+  Features:
+
+                              goto declaration
+                              goto definition                                             
+    build system integration                           regex searching                    
+                              goto references          remote file editing                
+    code folding                                                                          
+    completion                                         repeat actions                     
+    debugger integration                                                                  
+    diagnostics               in-editor documentation                                     
+    file diffing              integrated terminal      spellcheck                         
+    file navigation           linting                  test integration                   
+    file tree                                          text replace                       
+    formatting                                         whitespace visualization           
+                              multicursors             window management                      
+
+<!-- }}} -->
+
+# <!-- {{{ -->    NEOVIM FEATURES WITH CONFIG 
+
+  Features:
+
+                              goto declaration         plugin support                     
+    auto includes             goto definition          refactoring                        
+    build system integration  goto interface           regex searching                    
+    call hierarchy            goto references          remote file editing                
+    code folding              goto type definition     renaming                           
+    completion                highlighting             repeat actions                     
+    debugger integration      hover menu               snippets                           
+    diagnostics               in-editor documentation  
+    file diffing              integrated terminal      spellcheck                         
+    file navigation           linting                  test integration                   
+    file tree                 list file symbols        text replace                       
+    formatting                list workspace symbols   whitespace visualization           
+    function signature help                            window management                      
+
+<!-- }}} -->
+
+# <!-- {{{ -->    NEOVIM FEATURES WITH PLUGINS 
+
+  Features:
+
+    ai integration            goto declaration         plugin support                     
+    auto includes             goto definition          refactoring                        
+    build system integration  goto interface           regex searching                    
+    call hierarchy            goto references          remote file editing                
+    code folding              goto type definition     renaming                           
+    completion                highlighting             repeat actions                     
+    debugger integration      hover menu               snippets                           
+    diagnostics               in-editor documentation  source control integration         
+    file diffing              integrated terminal      spellcheck                         
+    file navigation           linting                  test integration                   
+    file tree                 list file symbols        text replace                       
+    formatting                list workspace symbols   whitespace visualization           
+    function signature help   multicursors             window management                      
+
+<!-- }}} -->
+
+# <!-- {{{ -->    DEEPER EXPLANATION OF BUILTIN FEATURES 
+
+   Demo of zero-config capabilities:
+
+   src/poky/scripts/
+   https://github.com/anakin4747/midi-techno
+
+    file tree           - provided by netrw, :Explore, :Lexplore, :Rexplore (see :help netrw)
+    file navigation     - gf, gx, <C-o>, <C-i> 
+    remote file editing
+
+   src/poky/scripts/runqemu
+
+    goto declaration  - gD
+    goto definition   - gd
+    goto references   - *, g*, #, g#,
+    regex searching   - :vim, :lvim, :grep, :lgrep, :cnext, :cprev, :copen, :cclose
+    completion        - i_CTRL-N, i_CTRL-X and friends :help ins-completion
+    formatting        - =, >, <, gq, gw, gu, gU, :retab, :left, :right, :center, :set formatprg?
+    folding           - zm, zM, zr, zR, zo, zO, zc, zC (see :h folding)
+    linting*          - :compiler ruff
+    diagnostics       - :copen, :cclose, :cnext, :cprev
+
+    text replace
+
+   ```vim
+   %s/main/main2/g
+   %s/\v(create)_(logger)/\2_\1/g
+   ```
+
+    integrated terminal - :terminal
+
+   ```vim
+   cd src/htop
+   set shell=bash
+   terminal
+   ```
+   ```sh
+   ./autogen.sh && ./configure
+   ```
+    build system integration - :make, :compiler
+    in-editor documentation  - K, :Man
+    debugger integration     - :packadd termdebug, :Termdebug htop
+
+    repeat actions - > multiple rows and repeat . . .
+
+    window management - <C-w><C-w>, <C-w>[hjkl], <C-w>[HJKL], <C-w>o, <C-w>c, <C-w>s, <C-w>v, <C-w>x
+                        :windo
+
+    file diffing - :diffthis, :diffoff, :windo diffthis
+
+   ```vim
+   vertical new
+   read #
+   ```
+
+    spellcheck - [s, ]s
+
+   ```vim
+   set dictionary=/usr/share/dict/words
+   set spell
+   ```
+spellingmistake
+
+	whitespace visualization - set list                                                                         
+
+    multicursors* - macros and :global
+
+TODO
+
+<!-- }}} -->
+
+# <!-- {{{ -->    FEATURES ADDED WITH CONFIG BUT NOT PLUGINS
+
+  Neovim has LSP client support meaning that with a little config we can get
+  these LSP features:
+
+    auto includes
+    call hierarchy
     diagnostics
-    file diffing                       regex searching
-    file navigation                    remote file editing
-    file tree
-    formatting                         repeat actions
+    function signature help
+    goto declaration
+    goto definition
+    goto interface
+    goto type definition
+    list file symbols
+    list workspace symbols
+    refactoring
+    renaming
 
-    goto declaration*
-    goto definition*                   spellcheck
+  BUT NOT LANGUAGE SERVERS ARE CREATED EQUAL
 
-    goto references*                   text replace
-                                       whitespace visualization
-    highlighting*                      window management
+<!-- }}} -->
+
+# <!-- {{{ -->    
 
 
 <!-- }}} -->
 
-# NEOVIM FEATURES WITH CONFIG <!-- {{{ -->
+    plugin support - provided by ~/.config/nvim/pack/<plugin>/{start,opt}/<plugin>
+                     :scriptnames
 
-Features:
+# <!-- {{{ --> NOTES 
 
-                                       in-editor documentation
-    auto includes                      integrated terminal
-    build system integration           linting
-    call hierarchy                     list file symbols
-    code folding                       list workspace symbols
-    completion                         
-    debugger integration               plugin support
-    diagnostics                        refactoring
-    file diffing                       regex searching
-    file navigation                    remote file editing
-    file tree                          renaming
-    formatting                         repeat actions
-    function signature help            snippets
-    goto declaration                   
-    goto definition                    spellcheck
-    goto interface                     
-    goto references                    text replace
-    goto type definition               whitespace visualization
-    highlighting                       window management
-    hover menu
-
-<!-- }}} -->
-
-# NEOVIM FEATURES WITH PLUGINS <!-- {{{ -->
-
-Features:
-
-    ai integration                     in-editor documentation
-    auto includes                      integrated terminal
-    build system integration           linting
-    call hierarchy                     list file symbols
-    code folding                       list workspace symbols
-    completion                         multicursors
-    debugger integration               plugin support
-    diagnostics                        refactoring
-    file diffing                       regex searching
-    file navigation                    remote file editing
-    file tree                          renaming
-    formatting                         repeat actions
-    function signature help            snippets
-    goto declaration                   source control integration
-    goto definition                    spellcheck
-    goto interface                     test integration
-    goto references                    text replace
-    goto type definition               whitespace visualization
-    highlighting                       window management
-    hover menu
-
-<!-- }}} -->
-
-# DEEPER EXPLANATION OF BUILTIN FEATURES <!-- {{{ -->
-
-Demo of zero-config capabilities
-
-    completion                     in-editor documentation  
-    build system integration       integrated terminal      
-    diagnostics                    linting*                 
-    debugger integration           multicursors*            
-    file diffing                   plugin support           
-    file navigation                regex searching          
-    file tree                      remote file editing      
-    folding                        repeat actions           
-    formatting                     spellcheck               
-    goto declaration*              text replace             
-    goto definition*               whitespace visualization 
-    goto references*               window management        
-    highlighting
-
-<!-- }}} -->
-
-# NOTES <!-- {{{ -->
-Organize these by:
-- supported out of the box
-- supported by configuration
-- supported by plugin configuration
-- enhanced by configuration
-- enhanced by plugin configuration
-- not supported
+- features that other editors don't have:
+  - macros
+  - registers
+  -
 
 - completion
   - builtin manual completion that is more explicit than typical editors
-  - automatic completion not supported out of boxy
+  - automatic completion not supported out of box
   - completion can be enhanced by configuration and plugin configuration
 - hover menu
   - no hover menu by default
@@ -223,4 +279,4 @@ Organize these by:
 
 <!-- }}} -->
 
-<!-- vim: set nonumber norelativenumber nohlsearch foldmethod=marker noruler laststatus=0: -->
+<!-- vim: set nowrapscan nonumber norelativenumber nohlsearch foldmethod=marker noruler laststatus=0: -->
