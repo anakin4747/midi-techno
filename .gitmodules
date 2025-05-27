@@ -4,3 +4,9 @@
 [submodule "src/vscode-bitbake"]
 	path = src/vscode-bitbake
 	url = https://github.com/yoctoproject/vscode-bitbake.git
+[submodule "src/vim"]
+	path = src/vim
+	url = https://github.com/vim/vim.git
+[submodule "src/busybox"]
+	path = src/busybox
+	url = https://github.com/mirror/busybox.git
