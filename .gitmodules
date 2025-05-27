@@ -10,3 +10,6 @@
 [submodule "src/busybox"]
 	path = src/busybox
 	url = https://github.com/mirror/busybox.git
+[submodule "src/htop"]
+	path = src/htop
+	url = https://github.com/htop-dev/htop.git
