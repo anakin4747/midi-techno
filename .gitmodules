@@ -13,3 +13,6 @@
 [submodule "src/htop"]
 	path = src/htop
 	url = https://github.com/htop-dev/htop.git
+[submodule "src/ginko"]
+	path = src/ginko
+	url = https://github.com/Schottkyc137/ginko.git
