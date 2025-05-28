@@ -53,7 +53,7 @@
 
 <!-- }}} -->
 
-# <!-- {{{ -->    NEOVIM FEATURES WITH CONFIG
+# <!-- {{{ -->    NEOVIM FEATURES WITH CONFIG BUT NO PLUGINS
 
   Features:
 
@@ -100,12 +100,24 @@
    src/poky/scripts/
    https://github.com/anakin4747/midi-techno
 
-    file tree           - provided by netrw, :Explore, :Lexplore, :Rexplore (see :help netrw)
+    file tree           - provided by netrw, :Explore, :Lexplore, :Rexplore
+                          (see :help netrw)
     file navigation     - gf, gx, <C-o>, <C-i>
+
     remote file editing
+   
+   ```sh
+   nvim scp://host/remote-file
+   nvim rsync://host/remote-file
+   nvim ftp://host/remote-file
+   nvim sftp://host/remote-file
+   ```
 
    ```vim
    edit scp://host/remote-file
+   edit rsync://host/remote-file
+   edit ftp://host/remote-file
+   edit sftp://host/remote-file
    ```
 
    src/poky/scripts/runqemu
@@ -115,9 +127,9 @@
     goto references   - *, g*, #, g#,
     regex searching   - :vim, :lvim, :grep, :lgrep, :cnext, :cprev, :copen, :cclose
     completion        - i_CTRL-N, i_CTRL-X and friends :help ins-completion
-    formatting        - =, >, <, gq, gw, gu, gU, :retab, :left, :right, :center, :set formatprg?
+    formatting        - =, >, <, gq, gw, gu, gU, :left, :right, :center, :set formatprg?
     folding           - zm, zM, zr, zR, zo, zO, zc, zC (see :h folding)
-    linting*          - :compiler ruff
+    linting*          - :compiler ruff, :make %
     diagnostics       - :cc, :copen, :cclose, :cnext, :cprev
 
     text replace
@@ -143,7 +155,8 @@
 
     repeat actions - > multiple rows and repeat . . .
 
-    window management - <C-w><C-w>, <C-w>[hjkl], <C-w>[HJKL], <C-w>o, <C-w>c, <C-w>s, <C-w>v, <C-w>x
+    window management - <C-w><C-w>, <C-w>[hjkl], <C-w>[HJKL], <C-w>o,
+                        <C-w>c, <C-w>s, <C-w>v, <C-w>x
 
     file diffing - :diffthis, :diffoff, :windo diffthis
 
@@ -160,11 +173,17 @@
    ```
 spellingmistake
 
-	whitespace visualization - set list
+	whitespace visualization                                        
+
+   ```vim
+   set list
+
+   retab
+   ```
 
     multicursors* - macros and :global
 
-/^\s*{cE	vim.keymap.set(A€kb€kb)
+/^\s*{cE  vim.keymap.set($hxxi)
 
     put that into register q with "qy and play it back with 14@q
 
@@ -257,8 +276,10 @@ spellingmistake
 
 # <!-- {{{ -->    PLUGINS
 
-  Neovim and Vim support plugins out of the box and can be installed in Vim's
-  runtime path:
+  Neovim and Vim support plugins out of the box and can be installed
+  in Vim's runtime path:
+
+	  $PATH == &rtp
 
     ~/.config/nvim/pack/<plugin>/{start,opt}/<plugin>
 
@@ -266,8 +287,9 @@ spellingmistake
    :scriptnames
    ```
 
-  The default distributed plugins, your config, and other plugins all abide by
-  the same structure as explained in the 'runtimepath' (see :help rtp)
+  The default distributed plugins, your config, and other plugins all
+  abide by the same structure as explained in the 'runtimepath'
+  (see :help rtp)
 
    ```vim
    :echo substitute(&rtp, ',', '\n', 'g')
@@ -312,3 +334,5 @@ spellingmistake
   - autocmds
 
 <!-- }}} -->
+
+<!-- vim: set nowrapscan nonumber norelativenumber nohlsearch foldmethod=marker noruler laststatus=0: -->
